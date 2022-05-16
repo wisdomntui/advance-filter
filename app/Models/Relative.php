@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Relative extends Model
 {
     use HasFactory;
+
+    /**
+     * Return the user that this relative belongs to
+     *
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
