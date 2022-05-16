@@ -61,7 +61,7 @@ class User extends Authenticatable
      */
     public function scopeFilter($query, $filters)
     {
-        // This holds the filtering conditions
+        // Multidimensional array that holds the arrays of filtering conditions
         $conditions = [];
         foreach ($filters as $key => $value) {
             array_push($conditions, [$key, '=', $value]);
