@@ -26,6 +26,19 @@ class UserController extends Controller
             'location' => 'Nairobi',
         ];
 
+        // Relative Filters
+        $relativeFilter = [
+            'age' => 2,
+            'employment_status' => 'unemployed',
+        ];
+
+        // Fetch Users
+        $users = (new User)->filter($userFilter)->with(['relatives' => function ($query) use ($relativeFilter) {
+            $query->filter($relativeFilter);
+        }])->get();
+
+        dd($users);
+        // return $users;
     }
 
 }
