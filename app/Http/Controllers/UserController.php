@@ -16,20 +16,19 @@ class UserController extends Controller
     {
         /**
          * Here we will get users and their respective relatives based on different
-         * filters for users and relatives.
+         * filters for users and relatives. These filters can be generated from post data.
          */
 
         //  User Filters
         $userFilter = [
-            'age' => 2,
+            'age' => 22,
             'relationship' => 'married',
-            'location' => 'Nairobi',
+            'location' => 'Mumbai',
         ];
 
         // Relative Filters
         $relativeFilter = [
-            'age' => 2,
-            'employment_status' => 'unemployed',
+            'employment_status' => 'employed',
         ];
 
         // Fetch Users
@@ -37,8 +36,8 @@ class UserController extends Controller
             $query->filter($relativeFilter);
         }])->get();
 
-        dd($users);
-        // return $users;
+        // dd($users);
+        return $users;
     }
 
 }
