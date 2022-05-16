@@ -10,6 +10,19 @@ class Relative extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'age',
+        'phone',
+        'location',
+        'employment_status',
+    ];
+
+    /**
      * Return the user that this relative belongs to
      *
      */

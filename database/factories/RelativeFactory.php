@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RelativeFactory extends Factory
 {
-    // Cities
+    /**
+     * The cities assignable to relatives.
+     *
+     * @var array
+     */
     private $cities = [
         'Alaska',
         'Lagos',

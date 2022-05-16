@@ -8,7 +8,11 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
-    // Cities
+    /**
+     * The cities assignable to users.
+     *
+     * @var array
+     */
     private $cities = [
         'Alaska',
         'Lagos',
