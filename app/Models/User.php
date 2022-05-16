@@ -52,4 +52,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Relative::class);
     }
+
+    /**
+     * Scope method for filtering based on attributes
+     *
+     * @param $query
+     * @param array $filters
+     */
+    public function scopeFilter($query, $filters)
+    {
+        // This holds the filtering conditions
+        $conditions = [];
+        foreach ($filters as $key => $value) {
+            array_push($conditions, [$key, '=', $value]);
+        }
+
+        return $query->where($conditions);
+    }
 }
