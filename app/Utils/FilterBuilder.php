@@ -10,6 +10,9 @@ class FilterBuilder{
     /**
      * Constructor
      * 
+     * @param $query
+     * @param array $filters
+     * 
      * @return void
      */
     public function __constructor($query, $filters){
