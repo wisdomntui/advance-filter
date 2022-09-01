@@ -31,20 +31,4 @@ class Relative extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /**
-     * Scope method for filtering based on attributes
-     *
-     * @param $query
-     * @param array $filters
-     */
-    public function scopeFilter($query, $filters)
-    {
-        // Multidimensional array that holds the arrays of filtering conditions
-        $conditions = [];
-        foreach ($filters as $key => $value) {
-            array_push($conditions, [$key, '=', $value]);
-        }
-
-        return $query->where($conditions);
-    }
 }
