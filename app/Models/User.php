@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Utils\FilterBuilder;
 
 class User extends Authenticatable
 {
@@ -57,16 +58,11 @@ class User extends Authenticatable
      * Scope method for filtering based on attributes
      *
      * @param $query
-     * @param array $filters
+     * @param $filter
      */
     public function scopeFilter($query, $filters)
     {
-        // Multidimensional array that holds the arrays of filtering conditions
-        $conditions = [];
-        foreach ($filters as $key => $value) {
-            array_push($conditions, [$key, '=', $value]);
-        }
-
-        return $query->where($conditions);
+        $filter = new FilterBuilder($query, $filters);
+        return $filter->apply();
     }
 }
