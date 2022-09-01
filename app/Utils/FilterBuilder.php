@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Utilities;
+namespace App\Utils;
+use App\Utils\Filter;
 
 class FilterBuilder{
     protected $query;
@@ -22,6 +23,11 @@ class FilterBuilder{
      * @return $query
      */
     public function apply(){
-        
+        foreach($this->filters as $name => $value){
+            (new Filter($this->query))->handle($name, $value);
+        }
+
+        // Return modified query
+        return $this->query;
     }
 }
